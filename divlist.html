@@ -36,7 +36,8 @@
 		</div>
 	
 		<button onclick="makeNewDiv()">Add end</button>
-	
+		<button onclick="addFront()">Add front</button>
+    	<button onclick="remove()">Remove</button>
 	
 </body>
 <script>
@@ -51,5 +52,31 @@
 		container.appendChild(element)
 		
 	}
+
+	function addFront() {
+            const inputValue = document.getElementById('itemInput').value;
+
+            if (inputValue) {
+                const newElement = document.createElement('div');
+                newElement.innerHTML = inputValue;
+                newElement.className = 'divlist';
+
+                const container = document.getElementById('target');
+                const firstChild = container.firstChild;
+
+                container.insertBefore(newElement, firstChild);
+            }
+        }
+
+        function remove() {
+            const divListItems = document.getElementsByClassName('divlist');
+
+            if (divListItems.length > 0) {
+                const middleIndex = Math.floor(divListItems.length / 2);
+                const container = document.getElementById('target');
+                container.removeChild(divListItems[middleIndex]);
+            }
+        }
 </script>
+
 </html>	
